@@ -11,7 +11,8 @@ MiniDB 是一个 Java 实现的简单的数据库，部分原理参照自 MySQL�
 - 简单的SQL解析
 - 基于 socket 的 server 和 client
 
-#整体结构
+## 整体结构
+
 整个项目分为后端和前端，前后端通过 socket 进行交互。前端读取用户输入，并发送到后端执行，输出返回结果，并等待下一次输入。M后端则需要解析 SQL，如果是合法的 SQL，就尝试执行并返回结果。不包括解析器，MYDB 的后端划分为五个模块，每个模块都又一定的职责，通过接口向其依赖的模块提供方法。五个模块如下：
 
 - Transaction Manager（TM）
@@ -19,7 +20,9 @@ MiniDB 是一个 Java 实现的简单的数据库，部分原理参照自 MySQL�
 - Version Manager（VM）
 - Index Manager（IM）
 - Table Manager（TBM）
+
 ![image](https://github.com/user-attachments/assets/96ac4e70-f27b-4c87-8cb6-f939aeee54ac)
+
 每个模块的职责如下：
 
 - TM 通过维护 XID 文件来维护事务的状态，并提供接口供其他模块来查询某个事务的状态。
